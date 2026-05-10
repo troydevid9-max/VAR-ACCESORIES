@@ -1,44 +1,50 @@
-const pageType = document.body.dataset.layout
-const pageLocation = window.location.pathname
-
+const pageType = document.body.dataset.layout;
 
 const load = async (id, file) => {
 
-    //FETCH THE FILE 
+    try {
 
-    const response = await fetch(file);
+        const response = await fetch(file);
 
-    //PROCESS THE FETCHED RESPONSE
+        if(!response.ok){
 
-    const data = await response.text();
+            throw new Error(`Cannot fetch ${file}`);
 
-    //GET THE HEADER DIV 
+        }
 
-    const header = document.getElementById(id)
+        const data = await response.text();
 
-    //SET THE CORRECT HEADER
+        const element = document.getElementById(id);
 
-    header.innerHTML = data;
+        if(!element) return;
+
+        element.innerHTML = data;
+
+        document.dispatchEvent(new Event("headerLoaded"));
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+    }
+
 };
 
-//IF STATEMENTS TO SET THE CIRRECT HEADER AND FOOTER
+async function head(){
 
-async function head() {
+    if(pageType === "public"){
 
-    if (pageType === "public") {
-        if (pageLocation === "/FRONTEND/index.html" ||   pageLocation === "/" || pageLocation === "/index.html") {
-            await load("header", "./COMPONENTS/header.html")
-            await load("footer", "./COMPONENTS/footer.html")
-            headerAll()
-        }
+        // ROOT PATHS
 
-        else {
-            await load("header", "../COMPONENTS/header.html")
-            await load("footer", "../COMPONENTS/footer.html")
-            headerAll()
-        }
+        await load(
+            "header",
+            "/FRONTEND/COMPONENTS/header.html"
+        );
 
     }
 
 }
-head()
+
+head();

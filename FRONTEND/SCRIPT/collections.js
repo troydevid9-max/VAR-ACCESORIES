@@ -209,7 +209,7 @@ const collections = [
     // JEWELRY (5)
 
     {
-        category:"jewelry",
+        category:"jewelry, necklace",
         name:"Gold Necklace",
         price:350,
         rating:5,
@@ -220,7 +220,7 @@ const collections = [
         category:"jewelry",
         name:"Diamond Ring",
         price:900,
-        rating:5,
+        rating:4,
         image:"https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=800"
     },
 
@@ -244,7 +244,7 @@ const collections = [
         category:"jewelry",
         name:"Silver Bracelet",
         price:210,
-        rating:4,
+        rating:3,
         image:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?q=80&w=800"
     }
 
@@ -290,18 +290,49 @@ function renderCollections(items){
     });
 }
 
-renderCollections(collections);
+renderCollections(collections);document.addEventListener("headerLoaded", () => {
 
-const search = document.getElementById("search");
+    const searchInput = document.getElementById("search");
 
-search.addEventListener("keyup", () => {
+    const searchBtn = document.querySelector(".search-btn");
 
-    const searchValue = search.value.toLowerCase();
+    function searchCollections() {
 
-    const filteredCollections = collections.filter(item => 
-        item.category.toLowerCase().includes(searchValue)
-    );
+        const searchValue = searchInput.value.toLowerCase().trim();
 
-    renderCollections(filteredCollections);
+        // SHOW ALL ITEMS IF EMPTY
+
+        if (searchValue === "") {
+
+            renderCollections(collections);
+            return;
+        }
+
+        // FILTER ITEMS
+
+        const filteredCollections = collections.filter(item => {
+
+            return item.category.toLowerCase().includes(searchValue);
+
+        });
+
+        renderCollections(filteredCollections);
+    }
+
+    // SEARCH BUTTON CLICK
+
+    searchBtn.addEventListener("click", searchCollections);
+
+    // ENTER KEY SUPPORT
+
+    searchInput.addEventListener("keypress", (e) => {
+
+        if (e.key === "Enter") {
+
+            searchCollections();
+
+        }
+
+    });
 
 });

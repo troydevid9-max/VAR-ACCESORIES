@@ -146,3 +146,217 @@
     color: gold;
     font-size: 14px;
 }
+
+/* ABOUT */
+@import url('https://googleapis.com');
+
+.hero-section {
+    background-color: whitesmoke;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+}
+
+.hero-content {
+    flex: 1;
+    z-index: 2;
+}
+
+.main-title {
+    color: rgba(138, 32, 66, 0.804);
+    font-size: 68px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* White background for top text */
+.text-white {
+    background-color: #fff;
+    padding: 0 10px;
+    display: inline-block;
+}
+
+/* Yellow background for 'UNIQUE' */
+.text-highlight {
+    background-color: #ebd96b;
+    padding: 0 15px;
+    display: inline-block;
+    transform: rotate(-1deg);
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.shop-btn {
+    display: inline-block;
+    background-color: rgb(146, 22, 64);
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 35px;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: opacity 0.3s;
+}
+
+.shop-btn:hover {
+    opacity: 0.8;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero-image img {
+    width: 400px;
+    height: 400px;
+    border-radius: 45px;
+}
+
+/* FOUNDERS SLIDER */
+
+.founders-section {
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 70px;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+    color: rgb(121, 31, 61);
+}
+
+.slider-container {
+    width: 90%;
+    max-width: 1000px;
+    height: 450px;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.8s ease-in-out;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark overlay to make text readable */
+.slider-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.slider-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.45, 0, 0.55, 1);
+    position: relative;
+    z-index: 2;
+}
+
+.founder-card {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+}
+
+.text-content {
+    flex: 1;
+}
+
+.text-content h1 {
+    font-size: 56px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.text-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 350px;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.see-more {
+    background: white;
+    color: black;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.see-more:hover {
+    transform: scale(1.05);
+}
+
+.image-group {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.image-group img {
+    width: 110px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.controls {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 3;
+}
+
+.controls button {
+    background: white;
+    border: none;
+    width: 45px;
+    height: 35px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.controls button:hover {
+    background: #eee;
+}

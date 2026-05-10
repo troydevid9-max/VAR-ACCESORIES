@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+    <link rel="stylesheet" href="../STYLES/header.css">
+    <link rel="stylesheet" href="../STYLES/style.css">
+</head>
+<body>
+    
+    
+<body data-layout="public">
+    <div id="header"></div>
+
+   <section class="hero-section">
+  <div class="hero-content">
+    <h1 class="main-title">
+      <span class="text-white">LET'S</span><br>
+      EXPLORE<br>
+      <span class="text-highlight">UNIQUE</span><br>
+      CLOTHES.
+    </h1>
+    <p class="subtitle">V-A-R... Made for influential and innovative fashion!</p>
+    <a href="../index.html" class="shop-btn">SHOP NOW</a>
+  </div>
+  <div class="hero-image">
+   
+    <img src="../IMAGES/VAR LOGO.jpg" alt="VAR LOGO">
+  </div>
+</section>
+
+
+
+<section class="founders-section">
+  <h2 class="section-title">MEET OUR FOUNDERS</h2>
+  
+  <div class="slider-container" id="sliderContainer">
+    <div class="slider-track" id="sliderTrack">
+      
+      <!-- Founder 1: VITORY -->
+      <div class="founder-card">
+        <div class="text-content">
+          <h1>VITORY</h1>
+          <p>Vitory is the creative force behind V.A.R Accessories, infusing the brand with innovative ideas and a commitment to quality.</p>
+          <button class="see-more">See More</button>
+        </div>
+        <div class="image-group">
+          <!-- The first image below becomes the background -->
+          <img src="https://unsplash.com" class="bg-source" alt="Vitory 1">
+          <img src="https://unsplash.com" alt="Vitory 2">
+          <img src="https://unsplash.com" alt="Vitory 3">
+        </div>
+      </div>
+
+      <!-- Founder 2: ANITA -->
+      <div class="founder-card">
+        <div class="text-content">
+          <h1>ANITA</h1>
+          <p>Meet Anita, the company's Iconic model perfecting all fashion designs with elegance and style.</p>
+          <button class="see-more">See More</button>
+        </div>
+        <div class="image-group">
+          <img src="https://unsplash.com" class="bg-source" alt="Anita 1">
+          <img src="https://unsplash.com" alt="Anita 2">
+          <img src="https://unsplash.com" alt="Anita 3">
+        </div>
+      </div>
+
+      <!-- Founder 3: RACHEL -->
+      <div class="founder-card">
+        <div class="text-content">
+          <h1>RACHEL</h1>
+          <p>Rachel is the visionary behind V.A.R Accessories, bringing a passion for fashion and a keen eye for design.</p>
+          <button class="see-more">See More</button>
+        </div>
+        <div class="image-group">
+          <img src="https://unsplash.com" class="bg-source" alt="Rachel 1">
+          <img src="https://unsplash.com" alt="Rachel 2">
+          <img src="https://unsplash.com" alt="Rachel 3">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="controls">
+      <button onclick="moveSlide(-1)">❮</button>
+      <button onclick="moveSlide(1)">❯</button>
+    </div>
+  </div>
+</section>
+
+<script>
+    let currentIndex = 0;
+const slides = document.querySelectorAll('.founder-card');
+const track = document.getElementById('sliderTrack');
+const container = document.getElementById('sliderContainer');
+
+function moveSlide(direction) {
+  currentIndex += direction;
+  
+  if (currentIndex >= slides.length) {
+    currentIndex = 0;
+  } else if (currentIndex < 0) {
+    currentIndex = slides.length - 1;
+  }
+  
+  updateSlider();
+}
+
+function updateSlider() {
+  // 1. Slide the track
+  const offset = -currentIndex * 100;
+  track.style.transform = `translateX(${offset}%)`;
+
+  // 2. Change the background image to the FIRST image of the CURRENT slide
+  const currentImg = slides[currentIndex].querySelector('.bg-source').src;
+  container.style.backgroundImage = `url('${currentImg}')`;
+}
+
+// Set initial background image
+updateSlider();
+
+// Automatic slide every 2 seconds (as requested)
+let autoSlide = setInterval(() => {
+  moveSlide(1);
+}, 2000);
+
+// Optional: Reset timer when user manually clicks so it doesn't jump
+function resetTimer() {
+  clearInterval(autoSlide);
+  autoSlide = setInterval(() => {
+    moveSlide(1);
+  }, 2000);
+}
+
+// Add event listener to buttons to reset timer on click
+document.querySelectorAll('.controls button').forEach(btn => {
+  btn.addEventListener('click', resetTimer);
+});
+
+</script>
+
+
+
+
+    <script src="../SCRIPT/include.js"></script>
+</body>
+</html>
+
+
+
