@@ -1,30 +1,48 @@
 const pageType = document.body.dataset.layout;
 
+// LOAD HTML COMPONENTS
+
 const load = async (id, file) => {
 
     try {
 
+        // FETCH FILE
+
         const response = await fetch(file);
 
-        if(!response.ok){
+        // CHECK IF FETCH FAILED
+
+        if (!response.ok) {
 
             throw new Error(`Cannot fetch ${file}`);
 
         }
 
+        // CONVERT TO HTML
+
         const data = await response.text();
+
+        // TARGET ELEMENT
 
         const element = document.getElementById(id);
 
-        if(!element) return;
+        // STOP IF ELEMENT DOESN'T EXIST
+
+        if (!element) return;
+
+        // INSERT HTML
 
         element.innerHTML = data;
 
-        document.dispatchEvent(new Event("headerLoaded"));
+        // CUSTOM EVENT
+
+        document.dispatchEvent(
+            new Event("headerLoaded")
+        );
 
     }
 
-    catch(error){
+    catch (error) {
 
         console.error(error);
 
@@ -32,19 +50,23 @@ const load = async (id, file) => {
 
 };
 
-async function head(){
+// LOAD COMPONENTS
 
-    if(pageType === "public"){
+async function head() {
 
-        // ROOT PATHS
+    if (pageType === "public") {
+
+        // LOAD HEADER
 
         await load(
             "header",
-            "/FRONTEND/COMPONENTS/header.html"
+            "/COMPONENTS/header.html"
         );
 
     }
 
 }
+
+// START APP
 
 head();
