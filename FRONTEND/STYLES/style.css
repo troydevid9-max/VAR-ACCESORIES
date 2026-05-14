@@ -360,3 +360,114 @@
 .controls button:hover {
     background: #eee;
 }
+
+
+/* ================= TABLET ================= */
+
+@media (max-width:1024px) {
+
+    .collections-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .category-container {
+        flex-wrap: wrap;
+        gap: 25px;
+    }
+
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        gap: 40px;
+    }
+
+    .main-title {
+        font-size: 48px;
+    }
+
+    .hero-image img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .founder-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px) {
+
+    .category-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .category-card {
+        width: 90%;
+        height: 150px;
+    }
+
+    .collections-container {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .collections-top h2 {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .main-title {
+        font-size: 34px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    .hero-image img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .founders-section {
+        height: auto;
+        padding: 50px 15px;
+    }
+
+    .slider-container {
+        height: auto;
+        min-height: 650px;
+    }
+
+    .founder-card {
+        flex-direction: column;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .text-content h1 {
+        font-size: 32px;
+    }
+
+    .text-content p {
+        max-width: 100%;
+    }
+
+    .image-group {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .image-group img {
+        width: 90px;
+        height: 130px;
+    }
+
+}

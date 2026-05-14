@@ -292,7 +292,10 @@ function renderCollections(items){
 
 renderCollections(collections);document.addEventListener("headerLoaded", () => {
 
-    const searchInput = document.getElementById("search");
+    const searchInput =
+document.querySelector("#search")
+||
+document.querySelector(".mobile-search");
 
     const searchBtn = document.querySelector(".search-btn");
 
@@ -334,5 +337,28 @@ renderCollections(collections);document.addEventListener("headerLoaded", () => {
         }
 
     });
+
+});
+
+
+// MOBILE MENU
+
+document.addEventListener("headerLoaded", () => {
+
+    const hamburger = document.querySelector(".hamburger");
+
+    const mobileMenu = document.querySelector(".mobile-nav-links");
+
+    if(hamburger && mobileMenu){
+
+        hamburger.addEventListener("click", () => {
+
+            hamburger.classList.toggle("active");
+
+            mobileMenu.classList.toggle("show-mobile-menu");
+
+        });
+
+    }
 
 });

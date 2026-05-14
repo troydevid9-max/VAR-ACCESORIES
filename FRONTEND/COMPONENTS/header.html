@@ -10,7 +10,7 @@
 
 <body>
 
-<header>
+<header class="desktop-header">
 
     <nav>
 
@@ -136,8 +136,124 @@
         </button>
 
     </div>
-
 </header>
+
+
+<!-- =========================
+     MOBILE HEADER
+========================= -->
+
+<div class="mobile-header">
+
+    <!-- TOP -->
+
+    <div class="mobile-top">
+
+        <!-- HAMBURGER -->
+
+        <div class="hamburger">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <!-- BAG ICON -->
+
+        <i class="fa-solid fa-bag-shopping mobile-bag"></i>
+
+    </div>
+
+    <!-- MOBILE NAV -->
+
+    <div class="mobile-nav-links">
+
+        <a href="/index.html">Home</a>
+
+        <a href="/PAGES/about.html">About</a>
+
+        <a href="/PAGES/collections.html">
+            Collection
+        </a>
+
+        <a href="/PAGES/contact.html">
+            Contact
+        </a>
+
+    </div>
+
+    <!-- TEXT -->
+
+    <div class="mobile-text">
+
+        <h1>
+
+            Find your
+            <br>
+
+            Favorite
+            <br>
+
+            Items!
+
+        </h1>
+
+    </div>
+
+    <!-- SEARCH -->
+
+    <div class="mobile-search-wrapper">
+
+        <div class="mobile-search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <!-- SAME ID AS DESKTOP -->
+
+           <input
+    type="text"
+    class="mobile-search"
+    placeholder="Search"
+>
+
+        </div>
+
+        <!-- SAME CLASS AS DESKTOP -->
+
+        <button class="search-btn">
+
+            <i class="fa-solid fa-sliders"></i>
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    // =========================
+    // HAMBURGER MENU
+    // =========================
+
+    const hamburger =
+    document.querySelector(".hamburger");
+
+    const mobileMenu =
+    document.querySelector(".mobile-nav-links");
+
+    hamburger.addEventListener("click", () => {
+
+        hamburger.classList.toggle("active");
+
+        mobileMenu.classList.toggle("show-mobile-menu");
+
+    });
+
+</script>
+
 
 </body>
 </html>
