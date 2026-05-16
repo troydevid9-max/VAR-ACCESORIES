@@ -1,17 +1,24 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    /* ✅ FIX: prevents overflow from padding */
 }
 
 body {
     background-color: whitesmoke;
 }
 
-header {
+/* =========================
+   DESKTOP HEADER
+========================= */
 
+header {
     padding: 20px;
     background-color: pink;
     padding-bottom: 60px;
+    position: relative;
+    /* ✅ FIX: needed so mobile menu positions correctly */
 }
 
 nav {
@@ -31,8 +38,8 @@ nav {
 
 .nav-links a {
     color: rgb(121, 31, 61);
+    text-decoration: none;
 }
-
 
 .find {
     margin-top: 5px;
@@ -40,7 +47,6 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 
 .imghold {
@@ -52,27 +58,21 @@ nav {
     width: 300px;
     height: 300px;
     margin: 0;
-
 }
 
 .img2 {
     width: 190px;
     height: 190px;
     margin: 0;
-
 }
 
 .img3 {
     width: 190px;
     height: 190px;
     margin: 0;
-
 }
 
-
-
 .search-box {
-
     display: flex;
     align-items: center;
     gap: 40px;
@@ -86,6 +86,7 @@ nav {
     padding: 16px 10px;
     border-radius: 33px;
     border: none;
+    outline: none;
     color: #333;
     font-size: 1rem;
     background-color: white;
@@ -99,12 +100,6 @@ nav {
 #search:hover {
     width: 520px;
     background-color: rgb(255, 220, 225);
-
-}
-
-#search:active {
-    border: none;
-
 }
 
 .search-btn {
@@ -124,195 +119,107 @@ nav {
     transform: scale(1.08);
 }
 
-
-/* =========================
-   MOBILE HEADER
-========================= */
-
+/* Always hide mobile header on desktop */
 .mobile-header {
     display: none;
 }
 
-@media(max-width:768px) {
+/* =========================
+   HAMBURGER (defined ONCE)
+========================= */
 
-    /* HIDE DESKTOP */
-
-    .find,
-    .search-box,
-    .nav-links,
-    nav i {
-        display: none;
-    }
-
-    /* MAIN MOBILE */
-
-    .mobile-header {
-        display: block;
-        background: pink;
-        padding: 25px 20px 35px;
-        border-bottom-left-radius: 35px;
-        border-bottom-right-radius: 35px;
-        position: relative;
-        overflow: hidden;
-    }
-
-    /* TOP */
-
-    .mobile-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 45px;
-    }
-
-    /* BAG ICON */
-
-    .mobile-bag {
-        font-size: 1.4rem;
-        color: rgb(121, 31, 61);
-    }
-
-    /* HAMBURGER */
-
-    .hamburger {
-        width: 33px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        cursor: pointer;
-        z-index: 999;
-    }
-
-    .hamburger span {
-        width: 100%;
-        height: 3px;
-        border-radius: 20px;
-        background: rgb(121, 31, 61);
-        transition: 0.4s;
-    }
-
-    /* ANIMATION */
-
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translateY(13px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translateY(-13px);
-    }
-
-    /* TITLE */
-
-    .mobile-text h1 {
-        font-size: 3rem;
-        line-height: 1.15;
-        color: rgb(121, 31, 61);
-        font-family: Arial, Helvetica, sans-serif;
-        margin-bottom: 35px;
-        font-weight: 700;
-    }
-
-    /* SEARCH WRAPPER */
-
-    .mobile-search-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    /* SEARCH BAR */
-
-    .mobile-search-box {
-        flex: 1;
-        background: white;
-        border-radius: 40px;
-        padding: 16px 18px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .mobile-search-box i {
-        color: gray;
-        font-size: 0.95rem;
-    }
-
-    .mobile-search-box input {
-        border: none;
-        outline: none;
-        width: 100%;
-        background: transparent;
-        font-size: 1rem;
-    }
-
-    /* FILTER BUTTON */
-
-    .search-btn {
-        width: 56px;
-        height: 56px;
-        border: none;
-        border-radius: 50%;
-        background: white;
-        font-size: 1rem;
-        color: rgb(121, 31, 61);
-        cursor: pointer;
-        flex-shrink: 0;
-    }
-
-    /* MOBILE MENU */
-
-    .mobile-nav-links {
-        position: absolute;
-        top: 90px;
-        left: -100%;
-        width: 80%;
-        background: white;
-        border-radius: 25px;
-        padding: 30px;
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-        transition: 0.5s ease;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        z-index: 100;
-    }
-
-    .mobile-nav-links a {
-        text-decoration: none;
-        color: rgb(121, 31, 61);
-        font-size: 1.1rem;
-        font-weight: 600;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .show-mobile-menu {
-        left: 20px;
-    }
-
+.hamburger {
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1000;
 }
 
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    border-radius: 20px;
+    background: rgb(121, 31, 61);
+    transition: 0.4s;
+}
 
-@media(max-width:768px) {
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(9px);
+}
 
-    header {
-        padding: 0;
-        padding-bottom: 30px;
-    }
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
 
-    nav {
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-9px);
+}
+
+/* =========================
+   MOBILE MENU (defined ONCE)
+========================= */
+
+.mobile-nav-links {
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    width: 75%;
+    background: white;
+    border-radius: 24px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    transition: 0.4s ease;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+
+.mobile-nav-links a {
+    text-decoration: none;
+    color: rgb(121, 31, 61);
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.show-mobile-menu {
+    left: 18px;
+    /* ✅ FIX: one consistent value */
+}
+
+/* =========================
+   MOBILE BREAKPOINT (defined ONCE)
+========================= */
+
+@media (max-width: 768px) {
+
+    /* Hide desktop nav entirely */
+    nav,
+    .find,
+    .search-box,
+    .nav-links {
         display: none;
     }
 
+    /* Remove desktop header padding */
+    header {
+        padding: 0;
+        padding-bottom: 0;
+        /* ✅ FIX: no dead space below hidden desktop content */
+    }
+
+    /* Show mobile header */
     .mobile-header {
         display: block;
         background: pink;
         padding: 18px 18px 28px;
         border-bottom-left-radius: 28px;
         border-bottom-right-radius: 28px;
+        position: relative;
+        /* ✅ FIX: menu anchors to THIS element */
     }
 
     .mobile-top {
@@ -322,57 +229,18 @@ nav {
         margin-bottom: 28px;
     }
 
-    /* HAMBURGER */
-
-    .hamburger {
-        width: 28px;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-        z-index: 999;
-    }
-
-    .hamburger span {
-        width: 100%;
-        height: 3px;
-        border-radius: 30px;
-        background: rgb(121, 31, 61);
-        transition: 0.4s;
-    }
-
-    .hamburger.active span:nth-child(1) {
-        transform:
-            rotate(45deg) translateY(11px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-        transform:
-            rotate(-45deg) translateY(-11px);
-    }
-
-    /* BAG ICON */
-
     .mobile-bag {
         font-size: 1.2rem;
         color: rgb(121, 31, 61);
     }
-
-    /* TITLE */
 
     .mobile-text h1 {
         font-size: 2.2rem;
         line-height: 1.15;
         margin-bottom: 22px;
         color: rgb(121, 31, 61);
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
-    /* SEARCH */
 
     .mobile-search-wrapper {
         display: flex;
@@ -390,6 +258,11 @@ nav {
         gap: 10px;
     }
 
+    .mobile-search-box i {
+        color: gray;
+        font-size: 0.9rem;
+    }
+
     .mobile-search-box input {
         width: 100%;
         border: none;
@@ -405,105 +278,9 @@ nav {
         border-radius: 50%;
         background: white;
         font-size: 1rem;
+        color: rgb(121, 31, 61);
+        cursor: pointer;
         flex-shrink: 0;
     }
-
-    /* MOBILE MENU */
-
-    .mobile-nav-links {
-        position: absolute;
-        top: 75px;
-        left: -100%;
-        width: 72%;
-        background: white;
-        padding: 24px;
-        border-radius: 24px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        transition: 0.4s ease;
-        z-index: 999;
-        box-shadow:
-            0 15px 35px rgba(0, 0, 0, 0.08);
-    }
-
-    .mobile-nav-links a {
-        text-decoration: none;
-        color: rgb(121, 31, 61);
-        font-weight: 600;
-        font-size: 1rem;
-    }
-
-    .show-mobile-menu {
-        left: 18px;
-    }
-
-}
-
-/* HAMBURGER */
-
-.hamburger {
-
-    width: 30px;
-    height: 22px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-    z-index: 1000;
-
-}
-
-.hamburger span {
-
-    width: 100%;
-    height: 3px;
-    background: rgb(121, 31, 61);
-    border-radius: 20px;
-    transition: 0.4s;
-
-}
-
-/* ACTIVE ANIMATION */
-
-.hamburger.active span:nth-child(1) {
-
-    transform: rotate(45deg) translate(5px, 6px);
-
-}
-
-.hamburger.active span:nth-child(2) {
-
-    opacity: 0;
-
-}
-
-.hamburger.active span:nth-child(3) {
-
-    transform: rotate(-45deg) translate(6px, -7px);
-
-}
-
-/* MOBILE MENU */
-
-.mobile-nav-links {
-
-    position: absolute;
-    top: 70px;
-    left: -100%;
-    width: 100%;
-    background: pink;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    padding: 30px 0;
-    transition: 0.4s ease;
-
-}
-
-.show-mobile-menu {
-
-    left: 0;
 
 }
