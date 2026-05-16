@@ -1,40 +1,27 @@
 const pageType = document.body.dataset.layout;
 
-// LOAD HTML COMPONENTS
-
 const load = async (id, file) => {
 
     try {
 
-        // FETCH FILE
-
         const response = await fetch(file);
 
-        // CHECK IF FETCH FAILED
-
-        if (!response.ok) {
+        if(!response.ok){
 
             throw new Error(`Cannot fetch ${file}`);
 
         }
 
-        // CONVERT TO HTML
-
         const data = await response.text();
-
-        // TARGET ELEMENT
 
         const element = document.getElementById(id);
 
-        // STOP IF ELEMENT DOESN'T EXIST
-
-        if (!element) return;
-
-        // INSERT HTML
+        if(!element) return;
 
         element.innerHTML = data;
 
-        // CUSTOM EVENT
+        // RUN AFTER HEADER LOADS
+        initMobileMenu();
 
         document.dispatchEvent(
             new Event("headerLoaded")
@@ -42,7 +29,7 @@ const load = async (id, file) => {
 
     }
 
-    catch (error) {
+    catch(error){
 
         console.error(error);
 
@@ -50,13 +37,9 @@ const load = async (id, file) => {
 
 };
 
-// LOAD COMPONENTS
+async function head(){
 
-async function head() {
-
-    if (pageType === "public") {
-
-        // LOAD HEADER
+    if(pageType === "public"){
 
         await load(
             "header",
@@ -67,6 +50,34 @@ async function head() {
 
 }
 
-// START APP
-
 head();
+
+
+
+
+
+/* =========================
+   MOBILE MENU FUNCTION
+========================= */
+
+function initMobileMenu(){
+
+    const hamburger =
+    document.querySelector(".hamburger");
+
+    const mobileMenu =
+    document.querySelector(".mobile-nav-links");
+
+    if(!hamburger || !mobileMenu) return;
+
+    hamburger.addEventListener("click", () => {
+
+        hamburger.classList.toggle("active");
+
+        mobileMenu.classList.toggle(
+            "show-mobile-menu"
+        );
+
+    });
+
+}
