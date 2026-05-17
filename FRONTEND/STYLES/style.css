@@ -156,7 +156,7 @@
 ========================= */
 
 .hero-section {
-    background-color: whitesmoke;
+    background-color: #F5F5F5;
     min-height: 90vh;
     /* ✅ FIX: min-height instead of height — content won't overflow */
     display: flex;
@@ -494,6 +494,7 @@
     .main-title {
         font-size: 34px;
     }
+
 
     .subtitle {
         font-size: 15px;

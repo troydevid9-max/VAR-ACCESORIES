@@ -28,6 +28,27 @@ const collections = [
         image: "https://images.unsplash.com/photo-1547996160-81dfa63595aa?q=80&w=800"
     },
     {
+        category: " handbag ladies bag",
+        name: "Ladies Bag",
+        price: 12000,
+        rating: 4,
+        image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=800"
+    },
+     {
+        category: "jewelry",
+        name: "Diamond Ring",
+        price: 900,
+        rating: 4,
+        image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=800"
+    },
+     {
+        category: "jewelry",
+        name: "Diamond Ring",
+        price: 900,
+        rating: 4,
+        image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=800"
+    },
+     {
         category: "jewelry",
         name: "Diamond Ring",
         price: 900,
@@ -88,7 +109,7 @@ function renderCollections(items) {
             <div class="collection-bottom">
 
                 <div class="collection-price">
-                    $${item.price}
+                    ₦ ${item.price}
                 </div>
 
                 <div class="collection-rating">
